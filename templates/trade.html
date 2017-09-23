@@ -291,9 +291,11 @@
 
     setTimeout(function() {
         var elems = document.getElementsByClassName('headshot');
+        console.log("executing the right function");
         for (var i = 0; i < elems.length; i++){
             var height = elems[i].clientHeight;
-            if(height === 0){
+            if(height <= 24){
+                console.log("this person needs a blank pic");
                 elems[i].src = 'https://www.spotrac.com/assets/headshots/default-person.png'
             }
         }
