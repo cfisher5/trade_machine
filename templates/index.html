@@ -5,16 +5,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="../static/styles/styles.css"/>
+    <link type="text/css" rel="stylesheet" href="../static/styles/footer-distributed.css"/>
     <title>2017 CBA Trade Machine</title>
     <link rel="icon" href="http://diysolarpanelsv.com/images/basketball-clipart-png-42.png">
 
 </head>
 <body>
-<div class="jumbotron text-center bg">
-    <h2>Welcome to Cole Fisher's Trade Machine!</h2>
-    <h4>Trades are ruled possible or impossible based on the 2017 CBA.</h4>
-</div>
+<a style="text-decoration:none;color:black;" href="{{ url_for('index') }}">
+    <div class="jumbotron text-center bg">
+        <h2>NBA Trade Checker</h2>
+        <h4>Trades are ruled possible or impossible based on the 2017 CBA</h4>
+    </div>
+</a>
 
 <div class="container">
 
@@ -66,6 +70,18 @@
     </form>
 
 </div>
+
+<footer class="footer-distributed">
+    <div class="footer-right">
+        <a href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
+        <a href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+
+    <div class="footer-left">
+        <p class="footer-links">Cole Fisher - Western University Computer Science - colef@rogers.com</p>
+        <p>Created 2017</p>
+    </div>
+</footer>
 
 
 </body>

@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="../static/styles/styles.css"/>
+    <link type="text/css" rel="stylesheet" href="../static/styles/footer-distributed.css"/>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -15,6 +17,13 @@
     <title>2017 CBA Trade Machine</title>
 </head>
 <body id="trade_page">
+<a style="text-decoration:none;color:black;" href="{{ url_for('index') }}">
+    <div class="jumbotron text-center bg">
+        <h2>NBA Trade Checker</h2>
+        <h4>Trades are ruled possible or impossible based on the 2017 CBA</h4>
+    </div>
+</a>
+
 <form class="check_trade" method="POST" action="{{ url_for('checktrade', trade=trade_info) }}">
 
     <div class='container' style="padding-top:20px">
@@ -34,8 +43,8 @@
                 {% endif %}
 
             <div class="row">
-                <div class="col-xs-3 team_name" align="left"> {{ team.name }}</div>
-                <div class="col-xs-9 team_salary" id="{{ team.name }}-salary" align="right">Team Salary: {{ team.salary_as_currency() }}</div>
+                <div class="col-xs-3" align="left"> <img style="width:60px;" src="http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/{{ team.name }}.svg"/></div>
+                <div class="col-xs-9 team_salary" style="margin-top:38px;" id="{{ team.name }}-salary" align="right">Team Salary: {{ team.salary_as_currency() }}</div>
             </div>
 
             <hr class="divider">
@@ -54,15 +63,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr id="cash/picks/rights" class="{{ team.name }}">
-                    <td class="player" align="center" style="width:1%"><input type="checkbox" onclick="trade_player(this)" style="zoom:2"
-                                                                                  value=""/></td>
-
-                        <td style="width:1%"><img class="headshot" src="../static/money.png"/> </td>
-                        <td class="player">Draft Pick/Cash/Rights</td>
-                        <td></td>
-
-                </tr>
                 {% for player in team.get_players() %}
                     <tr id="{{ player.numID }}" class="{{ team.name }}">
                         <td class="player" align="center" style="width:1%"><input type="checkbox" onclick="trade_player(this)" style="zoom:2"
@@ -114,7 +114,7 @@
 
             </div>
 
-            <input class="btn btn-primary btn-block" type="submit" name="SUBMITBUTTON" value="Check Trade"/>
+            <input class="btn btn-primary btn-block" style="margin-bottom:150px;" type="submit" name="SUBMITBUTTON" value="Check Trade"/>
             <br>
             <br>
             </div>
@@ -129,6 +129,20 @@
 </form>
 
 </form>
+
+<footer class="footer-distributed">
+    <div class="footer-right">
+        <a href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
+        <a href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+
+    <div class="footer-left">
+        <p class="footer-links">Cole Fisher - Western University Computer Science - colef@rogers.com</p>
+        <p>Created 2017</p>
+    </div>
+</footer>
+
+
 </body>
 
 <script>
