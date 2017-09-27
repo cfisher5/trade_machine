@@ -54,6 +54,15 @@
                 </tr>
                 </thead>
                 <tbody>
+                <tr id="cash/picks/rights" class="{{ team.name }}">
+                    <td class="player" align="center" style="width:1%"><input type="checkbox" onclick="trade_player(this)" style="zoom:2"
+                                                                                  value=""/></td>
+
+                        <td style="width:1%"><img class="headshot" src="../static/money.png"/> </td>
+                        <td class="player">Draft Pick/Cash/Rights</td>
+                        <td></td>
+
+                </tr>
                 {% for player in team.get_players() %}
                     <tr id="{{ player.numID }}" class="{{ team.name }}">
                         <td class="player" align="center" style="width:1%"><input type="checkbox" onclick="trade_player(this)" style="zoom:2"

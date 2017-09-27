@@ -52,7 +52,7 @@ class Trade:
                     team_msg = "This trade would result in " + team.name + " crossing the apron while hardcapped. Therefore this trade is not possible."
                     return False, team_msg
                 else:
-                    team_msg = team.name + " can use " + str(currency(team.money_in)) + " of their TPE to make this trade work."
+                    team_msg = team.name + " can use " + str(currency(team.money_in)) + " of their TPE expiring " + str(tpe.expiry) + " to make this trade work."
             else:
                 team_msg = team.name + " does not have a suitable TPE to use"
                 return False, team_msg
@@ -62,7 +62,7 @@ class Trade:
             if team.is_taxpaying(team.money_out, team.money_in):
                 if team.money_in > team.money_out * 1.25 + 100000:
                     team_msg = team.name + " is unable to complete this trade. Since they are a taxpaying team, they are only able to take back 125% of the salary they are sending out, plus $100,000.\n"
-                    team_msg += team.name + " can only take back " + str(currency(team.money_out * 1.25 + 100000)) + " in salary"
+                    team_msg += team.name + " can only take back " + str(currency(team.money_out * 1.25 + 100000)) + " in salary based on the amount they are sending out."
                     return False, team_msg
 
             # Team1 IS NOT TAXPAYING TEAM
@@ -72,27 +72,27 @@ class Trade:
                 if team.money_out <= 6533333:
                     if team.money_in > team.money_out * 1.75 + 100000:
                         team_msg = team.name + " is unable to complete this trade. Since they are not a taxpaying team, and they are sending out less then $6,533,333 in salary, they are only able to take back 175% of the salary they are sending out, plus $100,000.\n"
-                        team_msg += team.name + " can only take back " + str(currency(team.money_out * 1.75 + 100000)) + " in salary"
+                        team_msg += team.name + " can only take back " + str(currency(team.money_out * 1.75 + 100000)) + " in salary based on the amount they are sending out."
                         return False, team_msg
 
                 # Outgoing salary b/w 6,533,333 - 19.6 million
                 elif team.money_out <= 19600000:
                     if team.money_in > team.money_out + 5000000:
                         team_msg = team.name + " is unable to complete this trade. Since they are not a taxpaying team and they are sending out between $6,533,333 and $19.6 in salary, they are only able to take back $5 million more than the salary they are sending out.\n"
-                        team_msg += team.name + " can only take back " + str(currency(team.money_out + 5000000)) + " in salary"
+                        team_msg += team.name + " can only take back " + str(currency(team.money_out + 5000000)) + " in salary based on the amount they are sending out."
                         return False, team_msg
 
                 # outgoing salary over 19.6 million
                 else:
                     if team.money_in > team.money_out * 1.25 + 100000:
                         team_msg = team.name + " is unable to complete this trade. Since they are not a taxpaying team, and they are sending out over $19.6 million in salary, they are only able to take back 125% of the salary they are sending out, plus $100,000.\n"
-                        team_msg += team.name + " can only take back " + str(currency(team.money_out * 1.25 + 100000)) + " in salary"
+                        team_msg += team.name + " can only take back " + str(currency(team.money_out * 1.25 + 100000)) + " in salary based on the amount they are sending out."
                         return False, team_msg
 
         if team.hard_capped == 1:
             if team.salary - team.money_out + team.money_in > CBA.apron:
-                team_msg = team.name + " is hardcapped at the apron. This trade is not possible.\n"
-                team_msg += team.name + " can only take back " + str(CBA.apron - team.salary - team.money_out) + " in salary"
+                team_msg = team.name + " is hardcapped at the apron.\n"
+                team_msg += team.name + " can only take back " + str(currency(CBA.apron - (team.salary - team.money_out))) + " in salary based on the amount they are sending out."
                 return False, team_msg
 
         return True, team_msg

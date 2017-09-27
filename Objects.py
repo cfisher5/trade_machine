@@ -85,8 +85,13 @@ class Team:
             next(exceptions, None)
             for ex in exceptions:
                 if self.name == ex[0] and ex[1] == "Trade Exception":
-                    tpe = (ex[4], currency(int(ex[3])))
-                    tpes.append(tpe)
+
+                    today = datetime.today()
+                    date_str = ex[4]
+                    exp_date = datetime.strptime(date_str, "%m/%d/%Y")
+                    if today < exp_date:
+                        tpe = (ex[4], currency(int(ex[3])))
+                        tpes.append(tpe)
         return tpes
 
 
@@ -201,6 +206,7 @@ class Player:
 class TradeException:
     def __init__(self, amount_needed, team):
         self.name = "TPE"
+        self.expiry = None
         self.team = team
         self.amount = self.set_amount(team, amount_needed)
 
@@ -217,8 +223,10 @@ class TradeException:
             for i in tpes:
                 today = datetime.today()
                 date_str = i[0]
+
                 exp_date = datetime.strptime(date_str, "%m/%d/%Y")
                 if today < exp_date and int(i[1]) >= (amount_needed - 100000):
+                    self.expiry = date_str
                     return amount_needed
             return None
 

@@ -47,7 +47,9 @@
 
                 {% if team.players_in|length == 0 %}
                     <tr>
-                        <td class="cash-picks-rights noborder" style="vertical-align: middle">Cash/Draft Picks/Rights</td>
+                        <td class="noborder" style="width:1%"><img class="headshot" src="../static/money.png"/> </td>
+                        <td class="noborder" style="vertical-align: middle">Cash/Draft Picks/Rights</td>
+
                     </tr>
                 {% endif %}
                 {% for p in team.players_in %}
@@ -72,7 +74,8 @@
 
                  {% if team.players_out|length == 0 %}
                     <tr>
-                        <td class="cash-picks-rights noborder" style="vertical-align: middle">Cash/Draft Picks/Rights</td>
+                        <td class="noborder" style="width:1%"><img class="headshot" src="../static/money.png"/> </td>
+                        <td class="noborder" style="vertical-align: middle">Cash/Draft Picks/Rights</td>
                     </tr>
                 {% endif %}
 
