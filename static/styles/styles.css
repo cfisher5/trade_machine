@@ -106,3 +106,7 @@
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+.tooltip:active .tooltiptext {
+    visibility: visible;
+}
