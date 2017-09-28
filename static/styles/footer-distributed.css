@@ -12,6 +12,14 @@
 
 }
 
+.blue_hover:hover{
+    color:dodgerblue !important;
+}
+
+#hover:hover{
+    color:dodgerblue !important;
+}
+
 .footer-distributed .footer-left p{
 	color:  #8f9296;
 	font-size: 12px;

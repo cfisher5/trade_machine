@@ -26,7 +26,7 @@
 
     <form class="form-inline" method="POST" action="{{ url_for('trade') }}">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-12 col-md-3">
                 <h4> Team 1:</h4>
                 <select name="team1" class="team_dropdown">
                     {% for i in team_list %}
@@ -34,7 +34,7 @@
                     {%  endfor %}
                 </select>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-12 col-md-3">
                 <h4> Team 2:</h4>
                 <select name="team2" class="team_dropdown">
                     {% for i in team_list %}
@@ -46,7 +46,7 @@
                     {%  endfor %}
                 </select>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-12 col-md-3">
                 <h4> Team 3:</h4>
                 <select name="team3" class="team_dropdown">
                     <option>None</option>
@@ -55,7 +55,7 @@
                     {%  endfor %}
                 </select>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-12 col-md-3">
                 <h4> Team 4:</h4>
                 <select name="team4" class="team_dropdown">
                     <option>None</option>
@@ -73,12 +73,12 @@
 
 <footer class="footer-distributed">
     <div class="footer-right">
-        <a href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
-        <a href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
+        <a class="blue_hover" href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
+        <a class="blue_hover" href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
     </div>
 
     <div class="footer-left">
-        <p class="footer-links">Cole Fisher • Western University Computer Science • <a href="mailto:colef@rogers.com" target="_top">colef@rogers.com</a></p>
+        <p class="footer-links">Cole Fisher • Western University Computer Science • <a class="blue_hover" href="mailto:colef@rogers.com" target="_top">colef@rogers.com</a></p>
         <p>Created 2017</p>
     </div>
 </footer>
