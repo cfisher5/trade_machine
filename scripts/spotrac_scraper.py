@@ -104,7 +104,7 @@ for abr, full_name in team_dict.teams.items():
     options = webdriver.ChromeOptions()
     options.add_argument("disable-infobars")
     options.add_argument("--disable-extensions")
-    options.add_argument("--headless")
+    # options.add_argument("--headless")
     options.add_argument("--disable-logging")
     driver = webdriver.Chrome(chrome_options=options)
     driver.get(url)
@@ -112,6 +112,8 @@ for abr, full_name in team_dict.teams.items():
 
     try:
         btn = driver.find_element_by_class_name('show-more')
+        driver.execute_script("arguments[0].scrollIntoView()", btn)
+
     except NoSuchElementException:
         print("no button in first place")
         btn = None
@@ -122,9 +124,11 @@ for abr, full_name in team_dict.teams.items():
     while btn is not None:
         btn.click()
         print("button clicked")
-        time.sleep(10)
+        time.sleep(4)
         try:
             btn = driver.find_element_by_class_name('show-more')
+            driver.execute_script("arguments[0].scrollIntoView()", btn)
+            time.sleep(1)
         except NoSuchElementException:
             print("no more buttons")
             btn = None
