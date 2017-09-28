@@ -2,7 +2,10 @@
     width:85% !important;
 }
 
-
+#error_msg{
+    text-align: center;
+    color:red;
+}
 
 .team_dropdown {
     width:80%;

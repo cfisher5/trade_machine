@@ -9,8 +9,13 @@ app.secret_key = "Nr\x97\xc7\xa9j\xa6J\xd4\x18\xd8\xfc\xe5\xa4\xb6\xe5\x87\xbdmA
 
 @app.route('/')
 def index():
-    return render_template('index.html', team_list=sorted(team_dict.teams))
+    return render_template('index.html', team_list=sorted(team_dict.teams), error_msg="")
 
+
+@app.errorhandler(500)
+def page_not_found(e):
+    error_msg = "Something went wrong. Perhaps you tried using the web browser's 'back' and/or 'forward' button. Please refrain from doing so. Instead, use the 'Create Trade' and 'Edit Trade' buttons, or press the header to take you to the homepage!"
+    return render_template('index.html', team_list=sorted(team_dict.teams), error_msg=error_msg)
 
 @app.route('/trade', methods=['GET', 'POST'])
 @app.route('/trade/<trade>', methods=['GET', 'POST'])
