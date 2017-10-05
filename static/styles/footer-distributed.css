@@ -10,10 +10,16 @@
 	padding: 20px;
 
 }
-@media only screen and (min-width : 516px) {
+
+@media only screen and (min-width : 769px) {
 	.index-footer {
-		position: absolute;
 		bottom: 0;
+	}
+}
+
+@media (orientation: landscape) and (max-width:676px){
+	.index-footer{
+		bottom: auto
 	}
 }
 

@@ -21,7 +21,7 @@
     </div>
 </a>
 
-<div class="container">
+<div class="container" id="content">
 
     <h3 id="error_msg"> {{ error_msg }}</h3>
     <h4> Please select your teams:</h4>
@@ -76,7 +76,7 @@
 <br>
 <br>
 
-<footer class="footer-distributed index-footer">
+<footer class="footer-distributed index-footer" id="footer_index">
     <div class="footer-right">
         <a class="blue_hover" href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
         <a class="blue_hover" href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
@@ -91,4 +91,21 @@
 
 </body>
 
+<script>
+{#    window.onresize = function() {#}
+{#        var content_height = $('#content').height();#}
+{#        var window_height = window.innerHeight;#}
+{#        console.log(content_height);#}
+{#        console.log(window_height);#}
+{#        if (content_height < window.innerHeight) {#}
+{#            console.log("set footer bottom to 0");#}
+{#            document.getElementById('footer_index').setAttribute('bottom', '0');#}
+{#        }#}
+{#        else {#}
+{#            console.log("set footer bottom to auto");#}
+{#            document.getElementById('footer_index').setAttribute('bottom', 'auto');#}
+{#        }#}
+{#    }#}
+
+</script>
 </html>
