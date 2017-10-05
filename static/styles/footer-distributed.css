@@ -5,19 +5,18 @@
 	width: 100%;
 	text-align: left;
 	font: normal 12px sans-serif;
-	position: fixed;
-	bottom: 0;
-	margin-top: 40px;
+	position: absolute;
+	bottom: auto;
 	padding: 20px;
 
 }
-@media only screen and (max-width : 600px) {
-	.footer-distributed {
+@media only screen and (min-width : 516px) {
+	.index-footer {
 		position: absolute;
-		bottom: auto;
-		margin-top: 50px;
+		bottom: 0;
 	}
 }
+
 .blue_hover:hover{
     color:dodgerblue !important;
 }
