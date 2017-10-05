@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f45a797-5088-47d8-bec3-2c27b787e662" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/styles/footer-distributed.css" afterPath="$PROJECT_DIR$/static/styles/footer-distributed.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/checktrade.html" afterPath="$PROJECT_DIR$/templates/checktrade.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/trade.html" afterPath="$PROJECT_DIR$/templates/trade.html" />
     </list>
     <ignored path="trade_machine.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -83,8 +80,8 @@
       <file leaf-file-name="checktrade.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/checktrade.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="119" column="18" lean-forward="true" selection-start-line="119" selection-start-column="18" selection-end-line="119" selection-end-column="18" />
+            <state relative-caret-position="432">
+              <caret line="123" column="14" lean-forward="true" selection-start-line="123" selection-start-column="14" selection-end-line="123" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -164,9 +161,9 @@
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/scripts/spotrac_scraper.py" />
         <option value="$PROJECT_DIR$/templates/trade.html" />
-        <option value="$PROJECT_DIR$/templates/checktrade.html" />
         <option value="$PROJECT_DIR$/static/styles/footer-distributed.css" />
         <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/templates/checktrade.html" />
       </list>
     </option>
   </component>
@@ -678,8 +675,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/checktrade.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="119" column="18" lean-forward="true" selection-start-line="119" selection-start-column="18" selection-end-line="119" selection-end-column="18" />
+        <state relative-caret-position="432">
+          <caret line="123" column="14" lean-forward="true" selection-start-line="123" selection-start-column="14" selection-end-line="123" selection-end-column="14" />
           <folding />
         </state>
       </provider>
