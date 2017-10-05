@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f45a797-5088-47d8-bec3-2c27b787e662" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/styles/footer-distributed.css" afterPath="$PROJECT_DIR$/static/styles/footer-distributed.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/checktrade.html" afterPath="$PROJECT_DIR$/templates/checktrade.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-    </list>
+    <list default="true" id="1f45a797-5088-47d8-bec3-2c27b787e662" name="Default" comment="" />
     <ignored path="trade_machine.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -109,8 +104,8 @@
           <file leaf-file-name="footer-distributed.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/styles/footer-distributed.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+                <state relative-caret-position="390">
+                  <caret line="26" column="32" lean-forward="true" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -752,8 +747,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/styles/footer-distributed.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state relative-caret-position="390">
+          <caret line="26" column="32" lean-forward="true" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
           <folding />
         </state>
       </provider>
