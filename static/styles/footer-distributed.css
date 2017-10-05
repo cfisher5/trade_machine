@@ -1,4 +1,4 @@
-.footer-distributed{
+.footer-distributed {
 	background-color: #292c2f;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
@@ -6,12 +6,18 @@
 	text-align: left;
 	font: normal 12px sans-serif;
 	position: fixed;
-	bottom:0;
-	margin-top:40px;
+	bottom: 0;
+	margin-top: 40px;
 	padding: 20px;
 
 }
-
+@media only screen and (max-width : 600px) {
+	.footer-distributed {
+		position: absolute;
+		bottom: auto;
+		margin-top: 50px;
+	}
+}
 .blue_hover:hover{
     color:dodgerblue !important;
 }
