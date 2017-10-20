@@ -104,7 +104,7 @@ for abr, full_name in team_dict.teams.items():
     options = webdriver.ChromeOptions()
     options.add_argument("disable-infobars")
     options.add_argument("--disable-extensions")
-    # options.add_argument("--headless")
+    options.add_argument("--headless")
     options.add_argument("--disable-logging")
     driver = webdriver.Chrome(chrome_options=options)
     driver.get(url)
