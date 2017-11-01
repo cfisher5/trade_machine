@@ -107,33 +107,43 @@ for abr, full_name in team_dict.teams.items():
     options.add_argument("--headless")
     options.add_argument("--disable-logging")
     driver = webdriver.Chrome(chrome_options=options)
-    driver.get(url)
-    time.sleep(5)
+    t = time.time()
+    driver.set_page_load_timeout(8)
+    try:
+        driver.get(url)
+    except TimeoutException:
+        driver.execute_script("window.stop();")
+        print("window stopped")
+    print("Time consuming:", time.time() - t)
 
     try:
         btn = driver.find_element_by_class_name('show-more')
+        print(btn)
         driver.execute_script("arguments[0].scrollIntoView()", btn)
+        time.sleep(4)
 
     except NoSuchElementException:
         print("no button in first place")
         btn = None
     except TimeoutException:
         print("cant find button initially/timeout on first load")
-        btn = None
+        btn = driver.find_element_by_class_name('show-more')
+        print(btn)
+        driver.execute_script("arguments[0].scrollIntoView()", btn)
+        time.sleep(6)
 
     while btn is not None:
-        btn.click()
-        print("button clicked")
-        time.sleep(4)
+
         try:
             btn = driver.find_element_by_class_name('show-more')
             driver.execute_script("arguments[0].scrollIntoView()", btn)
-            time.sleep(1)
+            btn.click()
+            print("button clicked")
+            time.sleep(6)
+        except TimeoutException:
+            print("unable to locate fucking button")
         except NoSuchElementException:
             print("no more buttons")
-            btn = None
-        except TimeoutException:
-            print("timeout on >1 load")
             btn = None
 
     source = driver.page_source
