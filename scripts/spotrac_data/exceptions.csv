@@ -1,25 +1,41 @@
 Team,Type,Amount,Amount_Remaining,Expiry_Date
-TOR,Non-Taxpayer Mid-Level Exception,8406000,469492,
-TOR,Bi-Annual Exception,3290000,3290000,
-TOR,Trade Exception,328000,328000,02/23/2018
-TOR,Trade Exception,11800000,11800000,07/09/2018
-TOR,Trade Exception,7630000,7630000,07/14/2018
-PHI,Room Exception,4328000,4328000,
-NYK,Room Exception,4328000,0,
-NYK,Trade Exception,2381965,2381965,09/25/2018
+IND,Room Exception,4328000,4328000,
+HOU,Non-Taxpayer Mid-Level Exception,8406000,350,
+HOU,Bi-Annual Exception,3290000,0,
+SAS,Non-Taxpayer Mid-Level Exception,8406000,0,
+SAS,Bi-Annual Exception,3290000,3290000,
+LAL,Room Exception,4328000,4328000,
+ORL,Room Exception,4328000,4328000,
+ORL,Trade Exception,2250000,2250000,02/14/2018
+UTA,Room Exception,4328000,1128000,
+LAC,Non-Taxpayer Mid-Level Exception,8406000,774770,
+LAC,Disabled Player Exception,2756757,0,03/10/2018
+LAC,Trade Exception,7273631,7273631,06/28/2018
+LAC,Trade Exception,1577230,1577230,09/25/2018
+NOP,Non-Taxpayer Mid-Level Exception,8406000,2190385,
+NOP,Bi-Annual Exception,3290000,3290000,
+NOP,Trade Exception,3517200,3517200,02/20/2018
+NOP,Trade Exception,2090000,2090000,06/21/2018
+NOP,Trade Exception,3853931,3853931,09/01/2018
+MIL,Non-Taxpayer Mid-Level Exception,8406000,7590385,
+MIL,Bi-Annual Exception,3290000,3290000,
+MIL,Trade Exception,1151241,1151241,02/02/2018
+MIL,Trade Exception,5000000,5000000,02/23/2018
+MIL,Trade Exception,3384175,3384175,11/07/2018
 BOS,Room Exception,4328000,0,
 BOS,Disabled Player Exception,8406000,8406000,03/10/2018
 PHX,Room Exception,4328000,4328000,
 GSW,Taxpayer Mid-Level Exception,5192000,0,
-CHI,Non-Taxpayer Mid-Level Exception,8406000,3790615,
-CHI,Bi-Annual Exception,3290000,3290000,
-CHI,Trade Exception,15311329,15311329,02/22/2018
-CHI,Trade Exception,5462000,1589480,02/23/2018
+CHA,Non-Taxpayer Mid-Level Exception,8406000,4890385,
+CHA,Bi-Annual Exception,3290000,3290000,
 WAS,Taxpayer Mid-Level Exception,5192000,1902000,
 WAS,Trade Exception,2515973,425973,02/22/2018
-DET,Non-Taxpayer Mid-Level Exception,8406000,0,
-DET,Bi-Annual Exception,3290000,0,
-DET,Trade Exception,874636,874636,06/28/2018
+MIN,Room Exception,4328000,0,
+MIA,Room Exception,4328000,4328000,
+MEM,Non-Taxpayer Mid-Level Exception,8406000,1440385,
+MEM,Bi-Annual Exception,3290000,0,
+MEM,Trade Exception,3408520,3408520,09/22/2018
+PHI,Room Exception,4328000,4328000,
 DAL,Non-Taxpayer Mid-Level Exception,8406000,8406000,
 DAL,Bi-Annual Exception,3290000,3290000,
 DAL,Trade Exception,6642537,621362,02/23/2018
@@ -27,24 +43,29 @@ DAL,Trade Exception,1514160,1514160,02/23/2018
 DAL,Trade Exception,1015696,1015696,06/28/2018
 DAL,Trade Exception,1312611,1312611,06/29/2018
 DAL,Trade Exception,1312611,1312611,07/07/2018
-NOP,Non-Taxpayer Mid-Level Exception,8406000,2190385,
-NOP,Bi-Annual Exception,3290000,3290000,
-NOP,Trade Exception,3517200,3517200,02/20/2018
-NOP,Trade Exception,2090000,2090000,06/21/2018
-NOP,Trade Exception,3853931,3853931,09/01/2018
-MEM,Non-Taxpayer Mid-Level Exception,8406000,1440385,
-MEM,Bi-Annual Exception,3290000,0,
-MEM,Trade Exception,3408520,3408520,09/22/2018
-SAC,Room Exception,4328000,4328000,
-SAC,Trade Exception,2963814,2963814,02/20/2018
+POR,Taxpayer Mid-Level Exception,5192000,5192000,
+POR,Trade Exception,543471,543471,06/28/2018
+POR,Trade Exception,12969502,12969502,07/25/2018
+TOR,Non-Taxpayer Mid-Level Exception,8406000,469492,
+TOR,Bi-Annual Exception,3290000,3290000,
+TOR,Trade Exception,328000,328000,02/23/2018
+TOR,Trade Exception,11800000,11800000,07/09/2018
+TOR,Trade Exception,7630000,7630000,07/14/2018
+OKC,Taxpayer Mid-Level Exception,5192000,0,
+OKC,Trade Exception,2550000,2550000,06/30/2018
 ATL,Room Exception,4328000,4328000,
 ATL,Trade Exception,2194500,2194500,01/18/2018
 ATL,Trade Exception,150000,150000,02/22/2018
 ATL,Trade Exception,3333334,3333334,02/23/2018
 ATL,Trade Exception,4346942,4346942,06/20/2018
 ATL,Trade Exception,286785,286785,06/28/2018
-IND,Room Exception,4328000,4328000,
-MIA,Room Exception,4328000,4328000,
+CHI,Non-Taxpayer Mid-Level Exception,8406000,3790615,
+CHI,Bi-Annual Exception,3290000,3290000,
+CHI,Trade Exception,15311329,15311329,02/22/2018
+CHI,Trade Exception,5462000,1589480,02/23/2018
+DET,Non-Taxpayer Mid-Level Exception,8406000,0,
+DET,Bi-Annual Exception,3290000,0,
+DET,Trade Exception,874636,874636,06/28/2018
 CLE,Taxpayer Mid-Level Exception,5192000,2557079,
 CLE,Trade Exception,4837500,4837500,01/08/2018
 CLE,Trade Exception,2194500,2194500,01/08/2018
@@ -52,28 +73,8 @@ CLE,Trade Exception,980431,980431,02/13/2018
 CLE,Trade Exception,2500000,2500000,10/14/2018
 CLE,Trade Exception,1312611,1312611,10/14/2018
 BKN,Room Exception,4328000,4328000,
-POR,Taxpayer Mid-Level Exception,5192000,5192000,
-POR,Trade Exception,543471,543471,06/28/2018
-POR,Trade Exception,12969502,12969502,07/25/2018
-SAS,Non-Taxpayer Mid-Level Exception,8406000,0,
-SAS,Bi-Annual Exception,3290000,3290000,
-MIN,Room Exception,4328000,0,
-OKC,Taxpayer Mid-Level Exception,5192000,0,
-OKC,Trade Exception,4936529,4936529,11/01/2017
-OKC,Trade Exception,2550000,2550000,06/30/2018
-HOU,Non-Taxpayer Mid-Level Exception,8406000,350,
-HOU,Bi-Annual Exception,3290000,0,
-CHA,Non-Taxpayer Mid-Level Exception,8406000,4890385,
-CHA,Bi-Annual Exception,3290000,3290000,
-LAL,Room Exception,4328000,4328000,
-MIL,Non-Taxpayer Mid-Level Exception,8406000,7590385,
-MIL,Bi-Annual Exception,3290000,3290000,
-MIL,Trade Exception,1151241,1151241,02/02/2018
-MIL,Trade Exception,5000000,5000000,02/23/2018
-UTA,Room Exception,4328000,1128000,
-ORL,Room Exception,4328000,4328000,
-ORL,Trade Exception,2250000,2250000,02/14/2018
-LAC,Non-Taxpayer Mid-Level Exception,8406000,774770,
-LAC,Trade Exception,7273631,7273631,06/28/2018
-LAC,Trade Exception,1577230,1577230,09/25/2018
+SAC,Room Exception,4328000,4328000,
+SAC,Trade Exception,2963814,2963814,02/20/2018
 DEN,Room Exception,4328000,4328000,
+NYK,Room Exception,4328000,0,
+NYK,Trade Exception,2381965,2381965,09/25/2018
