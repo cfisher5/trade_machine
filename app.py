@@ -2,6 +2,8 @@ from flask import Flask, request, render_template, session
 from Trade import Trade
 import Objects
 from scripts import team_dict
+import ast
+
 
 app = Flask(__name__)
 app.secret_key = "Nr\x97\xc7\xa9j\xa6J\xd4\x18\xd8\xfc\xe5\xa4\xb6\xe5\x87\xbdmA\x97\xf3n"
@@ -84,10 +86,30 @@ def trade(trade=None):
 @app.route('/checktrade', methods=['GET', 'POST'])
 def checktrade(trade=None):
 
-    print(trade)
 
+    trade = ast.literal_eval(trade)
+    print("THIS IS THE TRADE STRING:")
+    print(trade)
+    team_names = []
     trade_string = ""
-    team_names = session['teams']
+    if trade is None:
+        team_names = session['teams']
+        for team in team_names:
+            print(team)
+    else:
+        print("no session saved - trying to input teams manually")
+        for elem in trade:
+            print(elem)
+            team_name = elem[0]
+            exists = False
+            for team in team_names:
+                if team_name == team:
+                    print("already exists")
+                    exists = True
+                    break
+            if not exists:
+                team_names.append(team_name)
+
     team_dict = {}
     allteams = []
 
@@ -97,14 +119,19 @@ def checktrade(trade=None):
         team_dict[t] = team_obj
 
     all_players = []
+
+
     for team in team_names:
         trade_string += team + ":"
         p_out_list = request.form.getlist(team + "_players_traded")
+        print("P out ist" )
+        print(p_out_list)
+
         for p in p_out_list:
             t_from, p_id, t_to = p.split("-")
             trade_string += p_id + "-" + t_to + ","
             all_players.append([t_from, p_id, t_to])
-
+            print([t_from, p_id, t_to])
         trade_string += "&"
 
     for player in all_players:
