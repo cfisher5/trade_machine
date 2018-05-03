@@ -7,105 +7,105 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet" href="../static/styles/styles.css"/>
-    <link type="text/css" rel="stylesheet" href="../static/styles/footer-distributed.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/styles/styles.css">
+    <link type="text/css" rel="stylesheet" href="../static/styles/footer-distributed.css">
     <title>2017 CBA Trade Machine</title>
-    <link rel="icon" href="../../GLeague-Predictions/static/ball.png">
+    <link rel="icon" href="/static/ball.png">
 
 </head>
+
 <body>
-<a style="text-decoration:none;color:black;" href="{{ url_for('index') }}">
-    <div class="jumbotron text-center bg">
-        <h2>NBA Trade Checker</h2>
-        <h4>Trades are ruled possible or impossible based on the 2017 CBA</h4>
-    </div>
-</a>
-
-<div class="container" id="content">
-
-    <h3 id="error_msg"> {{ error_msg }}</h3>
-    <h4> Please select your teams:</h4>
-
-    <form class="form-inline" method="POST" action="{{ url_for('trade') }}">
-        <div class="row">
-            <div class="col-sm-12 col-md-3">
-                <h4> Team 1:</h4>
-                <select name="team1" class="team_dropdown">
-                    {% for i in team_list %}
-                        <option name = {{ i }} value="{{ i }}"> {{ i }} </option>
-                    {%  endfor %}
-                </select>
-            </div>
-            <div class="col-sm-12 col-md-3">
-                <h4> Team 2:</h4>
-                <select name="team2" class="team_dropdown">
-                    {% for i in team_list %}
-                        {% if i == "BKN" %}
-                         <option selected name= {{ i }} value="{{ i }}"> {{ i }} </option>
-                        {% else %}
-                        <option name = {{ i }} value="{{ i }}"> {{ i }} </option>
-                        {%  endif %}
-                    {%  endfor %}
-                </select>
-            </div>
-            <div class="col-sm-12 col-md-3">
-                <h4> Team 3:</h4>
-                <select name="team3" class="team_dropdown">
-                    <option>None</option>
-                    {% for i in team_list %}
-                        <option name = {{ i }} value="{{ i }}"> {{ i }} </option>
-                    {%  endfor %}
-                </select>
-            </div>
-            <div class="col-sm-12 col-md-3">
-                <h4> Team 4:</h4>
-                <select name="team4" class="team_dropdown">
-                    <option>None</option>
-                    {% for i in team_list %}
-                        <option name = {{ i }} value="{{ i }}"> {{ i }} </option>
-                    {%  endfor %}
-                </select>
-            </div>
+<div class="outer_container">
+    <a style="text-decoration:none;color:black;" href="{{ url_for('index') }}">
+        <div class="jumbotron text-center bg">
+            <h2>NBA Trade Checker</h2>
+            <h4>Trades are ruled possible or impossible based on the 2017 CBA</h4>
         </div>
-        <br>
-        <input class="btn btn-primary btn-block" type="submit" name="SUBMITBUTTON" value="Go" />
-    </form>
+    </a>
+
+    <div class="container" id="content">
+
+        <h3 id="error_msg"> {{ error_msg }}</h3>
+        <h4> Please select your teams:</h4>
+
+        <form class="form-inline" method="POST" action="{{ url_for('trade') }}">
+            <div class="row">
+                <div class="col-sm-12 col-md-3">
+                    <h4> Team 1:</h4>
+                    <select name="team1" class="team_dropdown">
+                        {% for i in team_list %}
+                            <option name = {{ i }} value="{{ i }}"> {{ i }} </option>
+                        {%  endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <h4> Team 2:</h4>
+                    <select name="team2" class="team_dropdown">
+                        {% for i in team_list %}
+                            {% if i == "BKN" %}
+                                <option selected name= {{ i }} value="{{ i }}"> {{ i }} </option>
+                            {% else %}
+                                <option name = {{ i }} value="{{ i }}"> {{ i }} </option>
+                            {%  endif %}
+                        {%  endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <h4> Team 3:</h4>
+                    <select name="team3" class="team_dropdown">
+                        <option>None</option>
+                        {% for i in team_list %}
+                            <option name = {{ i }} value="{{ i }}"> {{ i }} </option>
+                        {%  endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <h4> Team 4:</h4>
+                    <select name="team4" class="team_dropdown">
+                        <option>None</option>
+                        {% for i in team_list %}
+                            <option name = {{ i }} value="{{ i }}"> {{ i }} </option>
+                        {%  endfor %}
+                    </select>
+                </div>
+            </div>
+            <br>
+            <input class="btn btn-primary btn-block" type="submit" name="SUBMITBUTTON" value="Go" />
+        </form>
+
+    </div>
+
+    <footer class="footer-distributed index-footer" id="footer_index">
+        <div class="footer-right">
+            <a class="blue_hover" href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <a class="blue_hover" href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
+        </div>
+
+        <div class="footer-left">
+            <p class="footer-links">Cole Fisher • Western University Computer Science • <a class="blue_hover" href="mailto:colef@rogers.com" target="_top">colef@rogers.com</a></p>
+            <p>Created 2017</p>
+        </div>
+    </footer>
 
 </div>
-
-<br>
-<br>
-
-<footer class="footer-distributed index-footer" id="footer_index">
-    <div class="footer-right">
-        <a class="blue_hover" href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
-        <a class="blue_hover" href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
-    </div>
-
-    <div class="footer-left">
-        <p class="footer-links">Cole Fisher • Western University Computer Science • <a class="blue_hover" href="mailto:colef@rogers.com" target="_top">colef@rogers.com</a></p>
-        <p>Created 2017</p>
-    </div>
-</footer>
-
 
 </body>
 
 <script>
-{#    window.onresize = function() {#}
-{#        var content_height = $('#content').height();#}
-{#        var window_height = window.innerHeight;#}
-{#        console.log(content_height);#}
-{#        console.log(window_height);#}
-{#        if (content_height < window.innerHeight) {#}
-{#            console.log("set footer bottom to 0");#}
-{#            document.getElementById('footer_index').setAttribute('bottom', '0');#}
-{#        }#}
-{#        else {#}
-{#            console.log("set footer bottom to auto");#}
-{#            document.getElementById('footer_index').setAttribute('bottom', 'auto');#}
-{#        }#}
-{#    }#}
+    {#    window.onresize = function() {#}
+    {#        var content_height = $('#content').height();#}
+    {#        var window_height = window.innerHeight;#}
+    {#        console.log(content_height);#}
+    {#        console.log(window_height);#}
+    {#        if (content_height < window.innerHeight) {#}
+    {#            console.log("set footer bottom to 0");#}
+    {#            document.getElementById('footer_index').setAttribute('bottom', '0');#}
+    {#        }#}
+    {#        else {#}
+    {#            console.log("set footer bottom to auto");#}
+    {#            document.getElementById('footer_index').setAttribute('bottom', 'auto');#}
+    {#        }#}
+    {#    }#}
 
 </script>
 </html>

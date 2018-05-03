@@ -1,5 +1,16 @@
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
 .container{
-    width:85% !important;
+    width:95% !important;
+    padding-bottom:165px;
+}
+.outer_container{
+    min-height:100%;
+    position: relative;
 }
 
 #error_msg{

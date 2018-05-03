@@ -14,145 +14,148 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="icon" href="../../GLeague-Predictions/static/ball.png">
+    <link rel="icon" href="/static/ball.png">
 
     <title>2017 CBA Trade Machine</title>
 </head>
+
 <body id="trade_page">
-<a style="text-decoration:none;color:black;" href="{{ url_for('index') }}">
-    <div class="jumbotron text-center bg">
-        <h2>NBA Trade Checker</h2>
-        <h4>Trades are ruled possible or impossible based on the 2017 CBA</h4>
-    </div>
-</a>
+<div class="outer_container">
 
-<form class="check_trade" method="POST" action="{{ url_for('checktrade', trade=trade_info) }}">
-
-    <div class='container' style="padding-top:20px">
-
-        <div class="row">
-            <div class="col-sm-12 col-md-4 padb">
-                <a href="{{ url_for('index') }}" class="btn btn-primary btn-block">Pick New Teams</a>
-            </div>
-            <div class="col-sm-12 col-md-8">
-                <input class="btn btn-primary btn-block" type="submit" name="SUBMITBUTTON" value="Check Trade"/>
-            </div>
+    <a style="text-decoration:none;color:black;" href="{{ url_for('index') }}">
+        <div class="jumbotron text-center bg">
+            <h2>NBA Trade Checker</h2>
+            <h4>Trades are ruled possible or impossible based on the 2017 CBA</h4>
         </div>
+    </a>
 
-            <br>
-            <br>
+    <form class="check_trade" method="POST" action="{{ url_for('checktrade', trade=trade_info) }}">
 
-        <div class="row">
-            {% for team in teams %}
-                {% if teams|length == 2 %}
-                    <div class="col-xs-12 col-md-6">
-                {% elif teams|length == 3 %}
-                    <div class="col-xs-12 col-md-4">
-                {% else %}
-                    <div class="col-md-12 col-lg-3 col-xl-3">
-                {% endif %}
+        <div class='container' style="padding-top:20px">
 
             <div class="row">
-                <div class="col-xs-3" align="left"> <img style="width:60px;" src="http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/{{ team.name }}.svg"/></div>
-                <div class="col-xs-9 team_salary" style="margin-top:38px;" id="{{ team.name }}-salary" align="right">Team Salary: {{ team.salary_as_currency() }}</div>
+                <div class="col-sm-12 col-md-4 padb">
+                    <a href="{{ url_for('index') }}" class="btn btn-primary btn-block">Pick New Teams</a>
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <input class="btn btn-primary btn-block" type="submit" name="SUBMITBUTTON" value="Check Trade"/>
+                </div>
             </div>
 
-            <hr class="divider">
-            <table id="{{ team.name }}" class="table table-hover table-responsive players_table being_traded">
-            </table>
+            <br>
+            <br>
 
-            <hr class="bottom divider">
+            <div class="row">
+                {% for team in teams %}
+                    {% if teams|length == 2 %}
+                        <div class="col-xs-12 col-sm-6">
+                    {% elif teams|length == 3 %}
+                        <div class="col-xs-12 col-sm-4">
+                    {% else %}
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                    {% endif %}
 
-            <table class="table table-striped table-bordered table-hover table-responsive players_table">
-                <thead>
-                <tr>
-                    <th>Trade?</th>
-                    <th></th>
-                    <th></th>
-                    <th style="text-align:right">Salary</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for player in team.get_players() %}
-                    <tr id="{{ player.numID }}" class="{{ team.name }}">
-                        <td class="player" align="center" style="width:1%"><input type="checkbox" onclick="trade_player(this)" style="zoom:2"
-                                                                                  name="{{ team.name }}_players_traded"
-                                                                                  value="{{ player.numID }}"/></td>
+                <div class="row">
+                    <div class="col-xs-3" align="left"> <img style="width:60px;" src="http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/{{ team.name }}.svg"/></div>
+                    <div class="col-xs-9 team_salary" style="margin-top:38px;" id="{{ team.name }}-salary" align="right">Team Salary: {{ team.salary_as_currency() }}</div>
+                </div>
 
-                        <td style="width:1%"><img class="headshot"
-                                                  src="https://www.spotrac.com/assets/headshots/nba/{{ player.numID }}.png">
-                        </td>
-                        <td class="player">{{ player.name }}
-                            {% if player.restriction != None %}
-                            <div class="tooltip">
-                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                <span class="tooltiptext"> {{ player.restriction_msg }} </span>
-                            </div>
-                            {% endif %}
-                        </td>
-                        <td class="player" align="right"> {{ player.salary_as_currency() }}</td>
+                <hr class="divider">
+                <table id="{{ team.name }}" class="table table-hover table-responsive players_table being_traded">
+                </table>
+
+                <hr class="bottom divider">
+
+                <table class="table table-striped table-bordered table-hover table-responsive players_table">
+                    <thead>
+                    <tr>
+                        <th>Trade?</th>
+                        <th></th>
+                        <th></th>
+                        <th style="text-align:right">Salary</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for player in team.get_players() %}
+                        <tr id="{{ player.numID }}" class="{{ team.name }}">
+                            <td class="player" align="center" style="width:1%"><input type="checkbox" onclick="trade_player(this)" style="zoom:2"
+                                                                                      name="{{ team.name }}_players_traded"
+                                                                                      value="{{ player.numID }}"/></td>
+
+                            <td style="width:1%"><img class="headshot"
+                                                      src="http://d1dglpr230r57l.cloudfront.net/headshots/nba/{{ player.numID }}.png">
+                            </td>
+                            <td class="player">{{ player.name }}
+                                {% if player.restriction != None %}
+                                    <div class="tooltip">
+                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                        <span class="tooltiptext"> {{ player.restriction_msg }} </span>
+                                    </div>
+                                {% endif %}
+                            </td>
+                            <td class="player" align="right"> {{ player.salary_as_currency() }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
                 <div>
-                {% if team.get_trade_exceptions()|length > 0 %}
-                <h5>Trade Exceptions</h5>
-                <table class="table table-hover table-responsive players_table being_traded">
-               <thead>
-                <tr>
-                    <th>Expiry Date:</th>
-                    <th style="text-align:right">Salary</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for tpe in team.get_trade_exceptions() %}
-                  <tr>
-                    <td>{{ tpe[0] }}</td>
-                    <td style="text-align:right" >{{ tpe[1] }}</td>
-                  </tr>
-                {% endfor %}
-                </table>
-                {% endif %}
+                    {% if team.get_trade_exceptions()|length > 0 %}
+                        <h5>Trade Exceptions</h5>
+                        <table class="table table-hover table-responsive players_table being_traded">
+                            <thead>
+                            <tr>
+                                <th>Expiry Date:</th>
+                                <th style="text-align:right">Salary</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for tpe in team.get_trade_exceptions() %}
+                                <tr>
+                                    <td>{{ tpe[0] }}</td>
+                                    <td style="text-align:right" >{{ tpe[1] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}
                 </div>
 
 
-            </div>
+                </div>
 
-            {% endfor %}
+                {% endfor %}
 
-            </div>
+                </div>
 
-            <input class="btn btn-primary btn-block" type="submit" name="SUBMITBUTTON" value="Check Trade"/>
-            <br>
-            <br>
+                <input class="btn btn-primary btn-block" type="submit" name="SUBMITBUTTON" value="Check Trade"/>
+                <br>
+                <br>
+                </div>
             </div>
         </div>
-    </div>
 
-<form id="whichTeam">
-<div class="dialog" style="display:none" title="Trade to where?">
-    <div id="dialog">
-    </div>
+        <form id="whichTeam">
+            <div class="dialog" style="display:none" title="Trade to where?">
+                <div id="dialog">
+                </div>
+            </div>
+        </form>
+
+    </form>
+
+    <footer class="footer-distributed">
+        <div class="footer-right">
+            <a class="blue_hover" href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <a class="blue_hover" href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
+        </div>
+
+        <div class="footer-left">
+            <p class="footer-links">Cole Fisher • Western University Computer Science • <a class="blue_hover" href="mailto:colef@rogers.com" target="_top">colef@rogers.com</a></p>
+            <p>Created 2017</p>
+        </div>
+    </footer>
+
 </div>
-</form>
-
-</form>
-
-<footer class="footer-distributed">
-    <div class="footer-right">
-        <a class="blue_hover" href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
-        <a class="blue_hover" href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
-    </div>
-
-    <div class="footer-left">
-        <p class="footer-links">Cole Fisher • Western University Computer Science • <a class="blue_hover" href="mailto:colef@rogers.com" target="_top">colef@rogers.com</a></p>
-        <p>Created 2017</p>
-    </div>
-</footer>
-
-
 
 </body>
 
@@ -161,8 +164,8 @@
     var team_length = '{{ team_names|length }}';
     console.log(team_length);
     if(team_length >= 2){
-         var team1 = '{{ team_names[0] }}';
-         var team2 = '{{ team_names[1] }}';
+        var team1 = '{{ team_names[0] }}';
+        var team2 = '{{ team_names[1] }}';
     }
     if (team_length >= 3){
         var team3 = '{{ team_names[2] }}';
@@ -307,8 +310,8 @@
             var salary_element = team_from.concat("-salary");
             console.log(salary_element);
             var team_salary = document.getElementById(salary_element).innerText;
-{#            var team_salary_backend = '{{ team_from.salary }}';#}
-{#            console.log(team_salary_backend);#}
+            {#            var team_salary_backend = '{{ team_from.salary }}';#}
+            {#            console.log(team_salary_backend);#}
 
             console.log(team_salary);
 
@@ -325,49 +328,47 @@
 
     setTimeout(function() {
         var elems = document.getElementsByClassName('headshot');
-        console.log("executing the right function");
         for (var i = 0; i < elems.length; i++){
             var height = elems[i].clientHeight;
             if(height <= 24){
-                console.log("this person needs a blank pic");
                 elems[i].src = 'https://www.spotrac.com/assets/headshots/default-person.png'
             }
         }
-    }, 2500);
+    }, 4000);
 
-{#    setTimeout(window.onload = function(){#}
-{#        console.log("page reloaded");#}
-{#        len = {{ trade_info|length }};#}
-{#        if(len>0){#}
-{#            trade_info = {{ trade_info|safe }};#}
-{#            for(var i = 0; i < len; i++) {#}
-{#                var team_from = trade_info[i][0];#}
-{#                var p_id = trade_info[i][1];#}
-{#                var team_to = trade_info[i][2];#}
-{#                console.log(team_from, p_id, team_to);#}
-{#                console.log(document.getElementById(p_id).children[0].children[0]);#}
-{#                document.getElementById(p_id).children[0].children[0].checked = true;#}
-{#                table = document.getElementById(team_to);#}
-{#                row = document.getElementById(p_id);#}
-{#                var clone = row.cloneNode(true); // copy children too#}
-{#                clone.deleteCell(0);#}
-{#                clone.id = p_id + "clone"; // change id#}
-{#                table.appendChild(clone); // add new row to end of table#}
-{#                row.children[0].children[0].setAttribute('value', team_from + '-' + p_id + '-' + team_to );#}
-{##}
-{#            }#}
-{#        }#}
-{#    },2500);#}
-{##}
-{#    window.onunload = function(){#}
-{#        console.log("about to relaod");#}
-{#        var teamlist = '{{ team_names }}';#}
-{#        var e = document.getElementById('trade_page').innerHTML;#}
-{#        console.log(e);#}
-{#        console.log(teamlist);#}
-{#        sessionStorage.setItem("teams", teamlist);#}
-{#        sessionStorage.setItem("everything", e);#}
-{#    };#}
+    {#    setTimeout(window.onload = function(){#}
+    {#        console.log("page reloaded");#}
+    {#        len = {{ trade_info|length }};#}
+    {#        if(len>0){#}
+    {#            trade_info = {{ trade_info|safe }};#}
+    {#            for(var i = 0; i < len; i++) {#}
+    {#                var team_from = trade_info[i][0];#}
+    {#                var p_id = trade_info[i][1];#}
+    {#                var team_to = trade_info[i][2];#}
+    {#                console.log(team_from, p_id, team_to);#}
+    {#                console.log(document.getElementById(p_id).children[0].children[0]);#}
+    {#                document.getElementById(p_id).children[0].children[0].checked = true;#}
+    {#                table = document.getElementById(team_to);#}
+    {#                row = document.getElementById(p_id);#}
+    {#                var clone = row.cloneNode(true); // copy children too#}
+    {#                clone.deleteCell(0);#}
+    {#                clone.id = p_id + "clone"; // change id#}
+    {#                table.appendChild(clone); // add new row to end of table#}
+    {#                row.children[0].children[0].setAttribute('value', team_from + '-' + p_id + '-' + team_to );#}
+    {##}
+    {#            }#}
+    {#        }#}
+    {#    },2500);#}
+    {##}
+    {#    window.onunload = function(){#}
+    {#        console.log("about to relaod");#}
+    {#        var teamlist = '{{ team_names }}';#}
+    {#        var e = document.getElementById('trade_page').innerHTML;#}
+    {#        console.log(e);#}
+    {#        console.log(teamlist);#}
+    {#        sessionStorage.setItem("teams", teamlist);#}
+    {#        sessionStorage.setItem("everything", e);#}
+    {#    };#}
 
 </script>
 

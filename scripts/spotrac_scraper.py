@@ -1,13 +1,10 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import team_dict
-from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import re
-import time
 import pandas as pd
 import os
-
+import requests
 
 players_file = open('spotrac_data/roster_players_temp.csv', 'w')
 exceptions_file = open('spotrac_data/exceptions_temp.csv', 'w')
@@ -101,56 +98,16 @@ for abr, full_name in team_dict.teams.items():
 
     # GET TEAM 2017 TRANSACTIONS
     url = "http://www.spotrac.com/nba/transactions/2017/" + full_name + "/"
-    options = webdriver.ChromeOptions()
-    options.add_argument("disable-infobars")
-    options.add_argument("--disable-extensions")
-    options.add_argument("--headless")
-    options.add_argument("--disable-logging")
-    driver = webdriver.Chrome(chrome_options=options)
-    t = time.time()
-    driver.set_page_load_timeout(8)
-    try:
-        driver.get(url)
-    except TimeoutException:
-        driver.execute_script("window.stop();")
-        print("window stopped")
-    print("Time consuming:", time.time() - t)
+    data = {'ajax': 'true', 'show': '300'}
+    response = requests.post(url, data=data)
 
-    try:
-        btn = driver.find_element_by_class_name('show-more')
-        print(btn)
-        driver.execute_script("arguments[0].scrollIntoView()", btn)
-        time.sleep(4)
+    url2 = "http://www.spotrac.com/nba/transactions/2018/" + full_name + "/"
+    response2 = requests.post(url2, data=data)
 
-    except NoSuchElementException:
-        print("no button in first place")
-        btn = None
-    except TimeoutException:
-        print("cant find button initially/timeout on first load")
-        btn = driver.find_element_by_class_name('show-more')
-        print(btn)
-        driver.execute_script("arguments[0].scrollIntoView()", btn)
-        time.sleep(6)
+    all_trans = response.text + response2.text
 
-    while btn is not None:
-
-        try:
-            btn = driver.find_element_by_class_name('show-more')
-            driver.execute_script("arguments[0].scrollIntoView()", btn)
-            btn.click()
-            print("button clicked")
-            time.sleep(6)
-        except TimeoutException:
-            print("unable to locate fucking button")
-        except NoSuchElementException:
-            print("no more buttons")
-            btn = None
-
-    source = driver.page_source
-    driver.quit()
-    soup = BeautifulSoup(source, "html.parser")
-    transactions = soup.find('div', {'id': 'transactionslist'})
-    for t in transactions.findAll('article'):
+    soup = BeautifulSoup(all_trans, "html.parser")
+    for t in soup.findAll('article'):
         date = t.span.span.string
         div = t.div
         name = div.h3.a.string

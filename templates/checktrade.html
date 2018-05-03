@@ -8,137 +8,140 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet" href="../static/styles/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/styles/styles.css">
     <link type="text/css" rel="stylesheet" href="../static/styles/footer-distributed.css"/>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <link rel="icon" href="../../GLeague-Predictions/static/ball.png">
+    <link rel="icon" href="/static/ball.png">
 
     <title>2017 CBA Trade Machine</title>
 </head>
 
 <body>
-<a style="text-decoration:none;color:black;" href="{{ url_for('index') }}">
-    <div class="jumbotron text-center bg">
-        <h2>NBA Trade Checker</h2>
-        <h4>Trades are ruled possible or impossible based on the 2017 CBA</h4>
-    </div>
-</a>
-<div class='container' style="padding-top:20px">
-    <div class="row">
-        <div class="col xs-12 col-sm-6 padb">
-            <a href="{{ url_for('index') }}" class="btn btn-primary btn-block">Create New Trade</a>
+<div class="outer_container">
+    <a style="text-decoration:none;color:black;" href="{{ url_for('index') }}">
+        <div class="jumbotron text-center bg">
+            <h2>NBA Trade Checker</h2>
+            <h4>Trades are ruled possible or impossible based on the 2017 CBA</h4>
         </div>
-        <div class="col xs-12 col-sm-6 padb">
-            <a href="{{ url_for('trade', trade=trade_string) }}" class="btn btn-primary btn-block">Edit Trade</a>
-        </div>
-    </div>
-    <h3 style="text-align: center;" id="final_decision">{{ final_decision }} </h3>
-    <div class="row">
-        {% for team in trade.teams %}
-            {% if team_names|length == 2 %}
-                <div class="col-xs-12 col-sm-6 padlr">
-            {% elif team_names|length == 3 %}
-                <div class="col-xs-12 col-sm-4 padlr">
-            {% else %}
-                <div class="col-xs-12 col-sm-6 col-md-3 padlr">
-            {% endif %}
-
-        <div class="row">
-            <div class="row">
-                <div class="col-xs-3" align="left"> <img style="width:60px;" src="http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/{{ team.name }}.svg"/></div>
-                <div class="col-xs-9 team_salary bold" style="padding-right: 20px; margin-top:38px;" align="right">Team Salary: {{ team.salary_as_currency() }}</div>
-            </div>
-
-            <hr style="border-color:black;margin:0px;">
-            <h5> Incoming: </h5>
-
-            <table class="table table-responsive players_table small_bottom_margin">
-
-                {% if team.players_in|length == 0 %}
-                    <tr>
-                        <td class="noborder" style="width:1%"><img class="headshot" src="../static/money.png"/> </td>
-                        <td class="noborder" style="vertical-align: middle">Cash/Draft Picks/Rights</td>
-
-                    </tr>
-                {% endif %}
-                {% for p in team.players_in %}
-                    <tr>
-                        <td class="noborder" style="width:1%"><img class="headshot"
-                                                                   src="https://www.spotrac.com/assets/headshots/nba/{{ p.numID }}.png">
-                        </td>
-                        <td class="player noborder" style="vertical-align: middle;">{{ p.name }}</td>
-                        <td class="player noborder" style="vertical-align: middle;" align="right"> {{ p.salary_as_currency() }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-            <div class="money_in_out bold"> Total Salary In: {{ team.money_in_as_currency() }}</div>
-
-        </div>
-        <div class="row">
-            <hr style="border-color:black;margin:0px;">
-
-            <h5> Outgoing: </h5>
-
-            <table class="table table-responsive players_table small_bottom_margin">
-
-                {% if team.players_out|length == 0 %}
-                    <tr>
-                        <td class="noborder" style="width:1%"><img class="headshot" src="../static/money.png"/> </td>
-                        <td class="noborder" style="vertical-align: middle">Cash/Draft Picks/Rights</td>
-                    </tr>
-                {% endif %}
-
-                {% for p in team.players_out %}
-                    <tr >
-                        <td class="noborder" style="width:1%"><img class="headshot"
-                                                                   src="https://www.spotrac.com/assets/headshots/nba/{{ p.numID }}.png">
-                        </td>
-                        <td class="player noborder" style="vertical-align: middle;"> {{ p.name }}</td>
-                        <td class="player noborder" style="vertical-align: middle;" align="right"> {{ p.salary_as_currency() }}</td>
-                    </tr>
-                {% endfor %}
-
-            </table>
-            <div class="money_in_out bold"> Total Salary Out: {{ team.money_out_as_currency() }}</div>
-            <hr style="border-color:black;margin:0;">
-
-        </div>
-
-        <div class="row msg" id ="team_msg">
-            {% for m in msgs[team] %}
-                <p style="margin:0 !important;"> {{ m }}</p>
-            {% endfor %}
-        </div>
-        </div>
-        {% endfor %}
-        </div>
+    </a>
+    <div class='container' style="padding-top:20px">
         <div class="row">
             <div class="col xs-12 col-sm-6 padb">
                 <a href="{{ url_for('index') }}" class="btn btn-primary btn-block">Create New Trade</a>
             </div>
             <div class="col xs-12 col-sm-6 padb">
-                <a id="refresh" href="{{ url_for('trade', trade=trade_string) }}" class="btn btn-primary btn-block">Edit Trade</a>
+                <a href="{{ url_for('trade', trade=trade_string) }}" class="btn btn-primary btn-block">Edit Trade</a>
             </div>
         </div>
-        <br>
-        <br>
-</div>
-<footer class="footer-distributed">
-    <div class="footer-right">
-        <a class="blue_hover" href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
-        <a class="blue_hover" href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
+        <h3 style="text-align: center;" id="final_decision">{{ final_decision }} </h3>
+        <div class="row">
+            {% for team in trade.teams %}
+                {% if team_names|length == 2 %}
+                    <div class="col-xs-12 col-sm-6 padlr">
+                {% elif team_names|length == 3 %}
+                    <div class="col-xs-12 col-sm-4 padlr">
+                {% else %}
+                    <div class="col-xs-12 col-sm-6 col-md-3 padlr">
+                {% endif %}
+
+            <div class="row">
+                <div class="row">
+                    <div class="col-xs-3" align="left"> <img style="width:60px;" src="http://i.cdn.turner.com/nba/nba/assets/logos/teams/primary/web/{{ team.name }}.svg"/></div>
+                    <div class="col-xs-9 team_salary bold" style="padding-right: 20px; margin-top:38px;" align="right">Team Salary: {{ team.salary_as_currency() }}</div>
+                </div>
+
+                <hr style="border-color:black;margin:0px;">
+                <h5> Incoming: </h5>
+
+                <table class="table table-responsive players_table small_bottom_margin">
+
+                    {% if team.players_in|length == 0 %}
+                        <tr>
+                            <td class="noborder" style="width:1%"><img class="headshot" src="../static/money.png"/> </td>
+                            <td class="noborder" style="vertical-align: middle">Cash/Draft Picks/Rights</td>
+
+                        </tr>
+                    {% endif %}
+                    {% for p in team.players_in %}
+                        <tr>
+                            <td class="noborder" style="width:1%"><img class="headshot"
+                                                                       src="http://d1dglpr230r57l.cloudfront.net/headshots/nba/{{ p.numID }}.png">
+                            </td>
+                            <td class="player noborder" style="vertical-align: middle;">{{ p.name }}</td>
+                            <td class="player noborder" style="vertical-align: middle;" align="right"> {{ p.salary_as_currency() }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <div class="money_in_out bold"> Total Salary In: {{ team.money_in_as_currency() }}</div>
+
+            </div>
+            <div class="row">
+                <hr style="border-color:black;margin:0px;">
+
+                <h5> Outgoing: </h5>
+
+                <table class="table table-responsive players_table small_bottom_margin">
+
+                    {% if team.players_out|length == 0 %}
+                        <tr>
+                            <td class="noborder" style="width:1%"><img class="headshot" src="../static/money.png"/> </td>
+                            <td class="noborder" style="vertical-align: middle">Cash/Draft Picks/Rights</td>
+                        </tr>
+                    {% endif %}
+
+                    {% for p in team.players_out %}
+                        <tr >
+                            <td class="noborder" style="width:1%"><img class="headshot"
+                                                                       src="http://d1dglpr230r57l.cloudfront.net/headshots/nba/{{ p.numID }}.png">
+                            </td>
+                            <td class="player noborder" style="vertical-align: middle;"> {{ p.name }}</td>
+                            <td class="player noborder" style="vertical-align: middle;" align="right"> {{ p.salary_as_currency() }}</td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+                <div class="money_in_out bold"> Total Salary Out: {{ team.money_out_as_currency() }}</div>
+                <hr style="border-color:black;margin:0;">
+
+            </div>
+
+            <div class="row msg" id ="team_msg">
+                {% for m in msgs[team] %}
+                    <p style="margin:0 !important;"> {{ m }}</p>
+                {% endfor %}
+            </div>
+            </div>
+            {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col xs-12 col-sm-6 padb">
+                    <a href="{{ url_for('index') }}" class="btn btn-primary btn-block">Create New Trade</a>
+                </div>
+                <div class="col xs-12 col-sm-6 padb">
+                    <a id="refresh" href="{{ url_for('trade', trade=trade_string) }}" class="btn btn-primary btn-block">Edit Trade</a>
+                </div>
+            </div>
+            <br>
+            <br>
+            </div>
+        </div>
+
+            <footer class="footer-distributed">
+                <div class="footer-right">
+                    <a class="blue_hover" href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    <a class="blue_hover" href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
+                </div>
+
+                <div class="footer-left">
+                    <p class="footer-links">Cole Fisher • Western University Computer Science • <a class="blue_hover" id="hover" href="mailto:colef@rogers.com" target="_top">colef@rogers.com</a></p>
+                    <p>Created 2017</p>
+                </div>
+            </footer>
+
+
     </div>
-
-    <div class="footer-left">
-        <p class="footer-links">Cole Fisher • Western University Computer Science • <a class="blue_hover" id="hover" href="mailto:colef@rogers.com" target="_top">colef@rogers.com</a></p>
-        <p>Created 2017</p>
-    </div>
-</footer>
-
-
-</div>
 </div>
 </body>
 
