@@ -3,4 +3,4 @@ __pycache__/
 .idea/workspace.xml
 */.DS_Store
 */__pycache__/
-
+*/*/.DS_Store
