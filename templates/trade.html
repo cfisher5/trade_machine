@@ -11,7 +11,7 @@
     <link type="text/css" rel="stylesheet" href="../static/styles/styles.css"/>
     <link type="text/css" rel="stylesheet" href="../static/styles/footer-distributed.css"/>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="icon" href="/static/ball.png">
@@ -87,10 +87,7 @@
                             </td>
                             <td class="player">{{ player.name }}
                                 {% if player.restriction != None %}
-                                    <div class="tooltip">
-                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                        <span class="tooltiptext"> {{ player.restriction_msg }} </span>
-                                    </div>
+                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" title="{{ player.restriction_msg }}"></span>
                                 {% endif %}
                             </td>
                             <td class="player" align="right"> {{ player.salary_as_currency() }}</td>
@@ -331,6 +328,15 @@
             }
         }
     }, 2000);
+
+    $( function() {
+        $( document ).tooltip(
+            {
+                show: false,
+                hide: false
+            }
+        );
+    });
 
     {#    setTimeout(window.onload = function(){#}
     {#        console.log("page reloaded");#}

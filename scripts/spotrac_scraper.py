@@ -97,11 +97,11 @@ for abr, full_name in team_dict.teams.items():
             team_salary_file.write(abr + "," + cap + "\n")
 
     # GET TEAM 2017 TRANSACTIONS
-    url = "http://www.spotrac.com/nba/transactions/2017/" + full_name + "/"
+    url = "http://www.spotrac.com/nba/transactions/2018/" + full_name + "/"
     data = {'ajax': 'true', 'show': '300'}
     response = requests.post(url, data=data)
 
-    url2 = "http://www.spotrac.com/nba/transactions/2018/" + full_name + "/"
+    url2 = "http://www.spotrac.com/nba/transactions/2017/" + full_name + "/"
     response2 = requests.post(url2, data=data)
 
     all_trans = response.text + response2.text
