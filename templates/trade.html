@@ -29,7 +29,7 @@
         </div>
     </a>
 
-    <form class="check_trade" method="POST" action="{{ url_for('checktrade', trade=trade_info) }}">
+    <form class="check_trade" method="GET" action="{{ url_for('checktrade', trade=trade_info) }}">
 
         <div class='container' style="padding-top:20px">
 
@@ -38,7 +38,7 @@
                     <a href="{{ url_for('index') }}" class="btn btn-primary btn-block">Pick New Teams</a>
                 </div>
                 <div class="col-sm-12 col-md-8">
-                    <input class="btn btn-primary btn-block" type="submit" name="SUBMITBUTTON" value="Check Trade"/>
+                    <input class="btn btn-primary btn-block" type="submit" value="Check Trade"/>
                 </div>
             </div>
 
@@ -119,41 +119,37 @@
                         </table>
                     {% endif %}
                 </div>
-
-
                 </div>
 
                 {% endfor %}
 
-                </div>
 
                 <input class="btn btn-primary btn-block" type="submit" name="SUBMITBUTTON" value="Check Trade"/>
                 <br>
                 <br>
-                </div>
-            </div>
-        </div>
 
-        <form id="whichTeam">
-            <div class="dialog" style="display:none" title="Trade to where?">
-                <div id="dialog">
                 </div>
-            </div>
-        </form>
 
+                <form id="whichTeam">
+                    <div class="dialog" style="display:none" title="Trade to where?">
+                        <div id="dialog">
+                        </div>
+                    </div>
+                </form>
     </form>
+</div>
 
-    <footer class="footer-distributed">
-        <div class="footer-right">
-            <a class="blue_hover" href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
-            <a class="blue_hover" href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
-        </div>
+<footer class="footer-distributed">
+    <div class="footer-right">
+        <a class="blue_hover" href="https://www.linkedin.com/in/cole-fisher/" target="_blank"><i class="fa fa-linkedin"></i></a>
+        <a class="blue_hover" href="https://github.com/cfisher5" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
 
-        <div class="footer-left">
-            <p class="footer-links">Cole Fisher • Western University Computer Science • <a class="blue_hover" href="mailto:colef@rogers.com" target="_top">colef@rogers.com</a></p>
-            <p>Created 2017</p>
-        </div>
-    </footer>
+    <div class="footer-left">
+        <p class="footer-links">Cole Fisher • Western University Computer Science • <a class="blue_hover" href="mailto:colef@rogers.com" target="_top">colef@rogers.com</a></p>
+        <p>Created 2017</p>
+    </div>
+</footer>
 
 </div>
 
@@ -221,16 +217,16 @@
                 if(team_length == 3){
 
                     if(team1 != player.className){
-                        var radBtn = $("<input type='radio' id=btn'"+team1+"' value='"+team1+"' class='radioteam' name='radioteam'>"+'&nbsp;'+team1+"</input>  <br>");
+                        var radBtn = $("<input type='radio' id=btn'"+team1+"' value='"+team1+"' class='radioteam' name='radioteam'><label class='radio-label' for=btn'"+team1+"'>"+team1+"</label> <br>");
                         radBtn.appendTo('#dialog');
 
                     }
                     if(team2 != player.className){
-                        var radBtn = $("<input type='radio' id=btn'"+team2+"' value='"+team2+"' class='radioteam' name='radioteam'>"+'&nbsp;'+team2+"</input>  <br>");
+                        var radBtn = $("<input type='radio' id=btn'"+team2+"' value='"+team2+"' class='radioteam' name='radioteam'><label class='radio-label' for=btn'"+team2+"'>"+team2+"</label> <br>");
                         radBtn.appendTo('#dialog');
                     }
                     if(team3 != player.className){
-                        var radBtn = $("<input type='radio' id=btn'"+team3+"' value='"+team3+"' class='radioteam' name='radioteam'>"+'&nbsp;'+team3+" </input> <br>");
+                        var radBtn = $("<input type='radio' id=btn'"+team3+"' value='"+team3+"' class='radioteam' name='radioteam'><label class='radio-label' for=btn'"+team3+"'>"+team3+"</label> <br>");
                         radBtn.appendTo('#dialog');
                     }
                 }
@@ -238,19 +234,19 @@
                 if(team_length == 4){
 
                     if(team1 != player.className){
-                        var radBtn = $("<input type='radio' id=btn'"+team1+"' value='"+team1+"' class='radioteam' name='radioteam'>"+'&nbsp;'+team1+" </input> <br>");
+                        var radBtn = $("<input type='radio' id=btn'"+team1+"' value='"+team1+"' class='radioteam' name='radioteam'><label class='radio-label' for=btn'"+team1+"'>"+team1+"</label> <br>");
                         radBtn.appendTo('#dialog');
                     }
                     if(team2 != player.className){
-                        var radBtn = $("<input type='radio' id=btn'"+team2+"' value='"+team2+"' class='radioteam' name='radioteam'>"+'&nbsp;'+team2+"</input> <br>");
+                        var radBtn = $("<input type='radio' id=btn'"+team2+"' value='"+team2+"' class='radioteam' name='radioteam'><label class='radio-label' for=btn'"+team2+"'>"+team2+"</label> <br>");
                         radBtn.appendTo('#dialog');
                     }
                     if(team3 != player.className){
-                        var radBtn = $("<input type='radio' id=btn'"+team3+"' value='"+team3+"' class='radioteam' name='radioteam'>"+'&nbsp;'+team3+"</input>  <br>");
+                        var radBtn = $("<input type='radio' id=btn'"+team3+"' value='"+team3+"' class='radioteam' name='radioteam'><label class='radio-label' for=btn'"+team3+"'>"+team3+"</label> <br>");
                         radBtn.appendTo('#dialog');
                     }
                     if(team4 != player.className){
-                        var radBtn = $("<input type='radio' id=btn'"+team4+"' value='"+team4+"' class='radioteam' name='radioteam'>"+'&nbsp;'+team4+"</input> <br>");
+                        var radBtn = $("<input type='radio' id=btn'"+team4+"' value='"+team4+"' class='radioteam' name='radioteam'><label class='radio-label' for=btn'"+team4+"'>"+team4+"</label> <br>");
                         radBtn.appendTo('#dialog');
                     }
                 }
@@ -334,7 +330,7 @@
                 elems[i].src = 'https://www.spotrac.com/assets/headshots/default-person.png'
             }
         }
-    }, 4000);
+    }, 500);
 
     {#    setTimeout(window.onload = function(){#}
     {#        console.log("page reloaded");#}

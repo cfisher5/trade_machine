@@ -15,7 +15,9 @@ def index():
 
 @app.errorhandler(500)
 def page_not_found(e):
-    error_msg = "Something went wrong. Perhaps you tried using the web browser's 'back' and/or 'forward' button. Please refrain from doing so. Instead, use the 'Create Trade' and 'Edit Trade' buttons, or press the header to take you to the homepage!"
+    error_msg = "Something went wrong. Perhaps you tried using the web browser's 'back' " \
+                "and/or 'forward' button. Please refrain from doing so. Instead, use the 'Create Trade' " \
+                "and 'Edit Trade' buttons, or press the header to take you to the homepage!"
     return render_template('index.html', team_list=sorted(team_dict.teams), error_msg=error_msg)
 
 
@@ -101,7 +103,8 @@ def checktrade(trade=None):
     all_players = []
     for team in team_names:
         trade_string += team + ":"
-        p_out_list = request.form.getlist(team + "_players_traded")
+        p_out_list = request.args.getlist(team + "_players_traded")
+        print(p_out_list)
         for p in p_out_list:
             t_from, p_id, t_to = p.split("-")
             trade_string += p_id + "-" + t_to + ","
