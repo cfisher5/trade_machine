@@ -161,15 +161,12 @@
     setTimeout(function() {
         var elems = document.getElementsByClassName('headshot');
         for (var i = 0; i < elems.length; i++){
-            var src = "https://cors-anywhere.herokuapp.com/" + elems[i].src;
-            var http = new XMLHttpRequest();
-            http.open('HEAD', src, false);
-            http.send();
-            if (http.status !== 200){
-                elems[i].src = 'https://www.spotrac.com/assets/headshots/default-person.png';
+            var height = elems[i].clientHeight;
+            if(height <= 24){
+                elems[i].src = 'https://www.spotrac.com/assets/headshots/default-person.png'
             }
         }
-    }, 1500);
+    }, 2000);
 
 
 
