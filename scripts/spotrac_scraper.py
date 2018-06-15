@@ -10,16 +10,31 @@ players_file = open('spotrac_data/roster_players_temp.csv', 'w')
 exceptions_file = open('spotrac_data/exceptions_temp.csv', 'w')
 team_salary_file = open('spotrac_data/team_salary_temp.csv', 'w')
 transactions_file = open('spotrac_data/transactions_temp.csv', 'w')
+draft_picks_file = open('spotrac_data/draft_picks_temp.csv', 'w')
 
 players_file.write("Player,Spotrac_ID,Team,Salary,Signed_Using,Trade_Kicker,Can_Block\n")
 exceptions_file.write("Team,Type,Amount,Amount_Remaining,Expiry_Date\n")
 team_salary_file.write("Team,Salary\n")
 transactions_file.write("Player,Pos,Spotrac_ID,Team,Trans_Date,Trans\n")
+draft_picks_file.write("Team,Season,Pick_Num\n")
+
+year = "2018"
+url = "http://www.spotrac.com/nba/draft/" + year + "/"
+page = urlopen(url)
+soup = BeautifulSoup(page, "html.parser")
+tables = soup.findAll('table', {'class': 'responsive'})
+for t in tables:
+    picks = t.tbody.findAll('tr')
+    for p in picks:
+        cols = p.findAll("td")
+        pick = cols[0].text
+        team = cols[1].strong.text
+        draft_picks_file.write(team + "," + year + "," + pick + "\n")
 
 for abr, full_name in team_dict.teams.items():
 
     print(full_name)
-    url = "http://www.spotrac.com/nba/" + full_name + "/cap/"
+    url = "http://www.spotrac.com/nba/" + full_name + "/cap/2018/"
     page = urlopen(url)
     soup = BeautifulSoup(page, "html.parser")
     active_players = soup.find('table', {'class': 'datatable'}).find('tbody').findAll('tr')
@@ -89,7 +104,7 @@ for abr, full_name in team_dict.teams.items():
                 exceptions_file.write(abr + "," + type + "," + amount + "," + amount_remaining + "," + expiry + "\n")
 
         # GET TEAM SALARY AMOUNT
-        sal_cap_phrase = re.compile("2017-18.*Salary\sCap\sTotals")
+        sal_cap_phrase = re.compile("2018-19.*Salary\sCap\sTotals")
         if sal_cap_phrase.match(header.h2.string):
             cap = header.findNext("table").find('tbody').findAll('td', {'class': 'captotal'})[1].strong.string
             cap = cap.replace("\t", "").replace(',', '').replace('$', '')
@@ -120,10 +135,12 @@ for abr, full_name in team_dict.teams.items():
         trans = trans.replace(",", "")
         transactions_file.write(name + "," + spotrac_id + "," + abr + "," + date + "," + trans + "\n")
 
+
 players_file.close()
 exceptions_file.close()
 team_salary_file.close()
 transactions_file.close()
+draft_picks_file.close()
 
 df = pd.read_csv('spotrac_data/roster_players_temp.csv', index_col=0)
 df.to_csv('spotrac_data/roster_players.csv')
@@ -140,6 +157,11 @@ os.remove('spotrac_data/team_salary_temp.csv')
 df = pd.read_csv('spotrac_data/transactions_temp.csv', index_col=0)
 df.to_csv('spotrac_data/transactions.csv')
 os.remove('spotrac_data/transactions_temp.csv')
+
+df = pd.read_csv('spotrac_data/draft_picks_temp.csv', index_col=0)
+df.to_csv('spotrac_data/draft_picks.csv')
+os.remove('spotrac_data/draft_picks_temp.csv')
+
 
 
 

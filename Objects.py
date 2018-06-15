@@ -2,6 +2,8 @@ from datetime import datetime, timedelta, date
 import CBA
 import csv
 from currency import currency
+
+
 class Team:
 
     def __init__(self, name):
@@ -9,10 +11,11 @@ class Team:
         self.salary = self.get_salary()
         self.hard_capped = self.is_hardcap()
         self.players_out = []
+        self.picks_out = []
         self.players_in = []
+        self.picks_in = []
         self.money_out = 0
         self.money_in = 0
-
 
     def calc_money_out(self):
         money = 0
@@ -94,6 +97,17 @@ class Team:
                         tpes.append(tpe)
         return tpes
 
+    def get_draft_picks(self):
+
+        dps = []
+        with open('scripts/spotrac_data/draft_picks.csv', 'r') as pick_file:
+            picks = csv.reader(pick_file, delimiter=',')
+            next(picks, None)
+            for p in picks:
+                if p[0] == self.name:
+                    dps.append(str(p[1]) + " Pick #" + str(p[2]))
+        return dps
+
 
 class Player:
     def __init__(self, player_id, team):
@@ -143,7 +157,6 @@ class Player:
     def salary_as_currency(self):
         sal = self.salary
         return str(currency(sal))
-
 
     def check_restrictions(self):
         # Common date comparisons
@@ -202,6 +215,7 @@ class Player:
                     self.restriction_msg = self.name + " was claimed off waivers during the off-season, so he cannot be traded until the 30th day of the season"
                     return "Waiver Claim"
         return None
+
 
 class TradeException:
     def __init__(self, amount_needed, team):

@@ -37,6 +37,9 @@ body {
 .headshot{
     height: 45%;
 }
+.question-mark{
+    height: 40px;
+}
 
 .team_name{
     font-weight:bold;

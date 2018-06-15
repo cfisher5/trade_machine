@@ -57,10 +57,10 @@
 
                             <table class="table table-responsive players_table small_bottom_margin">
 
-                                {% if team.players_in|length == 0 %}
+                                {% if team.players_in|length == 0 and team.picks_in|length == 0 %}
                                     <tr>
-                                        <td class="noborder" style="width:1%"><img class="headshot" src="../static/money.png"/> </td>
-                                        <td class="noborder" style="vertical-align: middle">Cash/Draft Picks/Rights</td>
+                                        <td class="noborder" style="width:1%"><img class="question-mark" src="../static/money.png"/> </td>
+                                        <td class="noborder" style="vertical-align: middle">Cash/Player Rights</td>
                                     </tr>
                                 {% endif %}
                                 {% for p in team.players_in %}
@@ -68,6 +68,13 @@
                                         <td class="noborder" style="width:1%"><img class="headshot" src="http://d1dglpr230r57l.cloudfront.net/headshots/nba/{{ p.numID }}.png"> </td>
                                         <td class="player noborder" style="vertical-align: middle;">{{ p.name }}</td>
                                         <td class="player noborder" style="vertical-align: middle;" align="right"> {{ p.salary_as_currency() }}</td>
+                                    </tr>
+                                {% endfor %}
+                                {% for p in team.picks_in %}
+                                    <tr>
+                                        <td class="noborder" style="width:1%"><img class="question-mark" src="../static/question_mark.png"></td>
+                                        <td class="player noborder" style="vertical-align: middle;">{{ p }}</td>
+                                        <td class="player noborder" style="vertical-align: middle;" align="right"></td>
                                     </tr>
                                 {% endfor %}
                             </table>
@@ -81,10 +88,10 @@
 
                             <table class="table table-responsive players_table small_bottom_margin">
 
-                                {% if team.players_out|length == 0 %}
+                                {% if team.players_out|length == 0 and team.picks_out|length == 0 %}
                                     <tr>
-                                        <td class="noborder" style="width:1%"><img class="headshot" src="../static/money.png"/> </td>
-                                        <td class="noborder" style="vertical-align: middle">Cash/Draft Picks/Rights</td>
+                                        <td class="noborder" style="width:1%"><img class="question-mark" src="../static/money.png"/> </td>
+                                        <td class="noborder" style="vertical-align: middle">Cash/Player Rights</td>
                                     </tr>
                                 {% endif %}
 
@@ -95,6 +102,13 @@
                                         </td>
                                         <td class="player noborder" style="vertical-align: middle;"> {{ p.name }}</td>
                                         <td class="player noborder" style="vertical-align: middle;" align="right"> {{ p.salary_as_currency() }}</td>
+                                    </tr>
+                                {% endfor %}
+                                {% for p in team.picks_out %}
+                                    <tr>
+                                        <td class="noborder" style="width:1%"><img class="question-mark" src="../static/question_mark.png"></td>
+                                        <td class="player noborder" style="vertical-align: middle;">{{ p }}</td>
+                                        <td class="player noborder" style="vertical-align: middle;" align="right"></td>
                                     </tr>
                                 {% endfor %}
 

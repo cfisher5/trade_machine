@@ -8,7 +8,7 @@ last_year_file.write('Player,Spotrac_ID,Team,Salary\n')
 for abr, full_name in team_dict.teams.items():
 
     print(full_name)
-    url = "http://www.spotrac.com/nba/" + full_name + "/cap/2016/"
+    url = "http://www.spotrac.com/nba/" + full_name + "/cap/2017/"
     page = urlopen(url)
     soup = BeautifulSoup(page, "html.parser")
     active_players = soup.find('table', {'class': 'datatable'}).find('tbody').findAll('tr')

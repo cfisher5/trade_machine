@@ -93,6 +93,16 @@
                             <td class="player" align="right"> {{ player.salary_as_currency() }}</td>
                         </tr>
                     {% endfor %}
+                    {% for pick in team.get_draft_picks() %}
+                        <tr id="{{ pick }}" class="{{ team.name }}">
+                            <td class="player" align="center" style="width:1%"><input type="checkbox" onclick="trade_player(this)" style="zoom:2"
+                                                                                      name="{{ team.name }}_players_traded"
+                                                                                      value="{{ pick }}"/></td>
+                            <td style="width:1%"><img class="question-mark" src="../static/question_mark.png"></td>
+                            <td class="player">{{ pick }}</td>
+                            <td class="player" align="right"></td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
 

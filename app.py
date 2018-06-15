@@ -118,19 +118,13 @@ def checktrade(trade=None):
         p_id = player[1]
         t_to = player[2]
 
-        p = Objects.Player(p_id, t_from)
-
-        team_dict[t_from].players_out.append(p)
-        team_dict[t_to].players_in.append(p)
-
-    for i in team_dict.values():
-        print(i.name)
-        for p in i.players_out:
-            print("out")
-            print(p.name)
-        for p in i.players_in:
-            print("in")
-            print(p.name)
+        if "2018 Pick #" in p_id:
+            team_dict[t_from].picks_out.append(p_id)
+            team_dict[t_to].picks_in.append(p_id)
+        else:
+            p = Objects.Player(p_id, t_from)
+            team_dict[t_from].players_out.append(p)
+            team_dict[t_to].players_in.append(p)
 
     trade = Trade(allteams)
 
